@@ -15,8 +15,7 @@ foreach($_POST as $field => $value){
 }
 if(!empty($_SESSION['_errors'])){
     
-     error(422,"Unprocessable Entity");
-     back();
+    back();
 }
 
 }
@@ -39,9 +38,7 @@ foreach($_POST as $field => $value){
     
 }
 if(!empty($_SESSION['_errors'])){
-    pr($_SESSION['_errors']);
-     error(422,"Unprocessable Entity");
-     back();
+    back();
 }
 
 }

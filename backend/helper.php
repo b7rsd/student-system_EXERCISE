@@ -1,27 +1,13 @@
 <?php
-
-function pr(mixed $r,bool $die = false) {
-    echo "<pre>";
-    print_r($r);
-    echo "</pre>";
-    if($die){
-        exit;
-    }
-}
-
 function error(int $code , string $message){
     http_response_code($code);
-    echo $message;
+        exit;
     
 }
 
 
 function apiError(int $code , string $msg){
     http_response_code($code);
-    echo json_encode([
-        "status" => $code,
-        "message" => $msg
-    ]);
     exit;
 }
 

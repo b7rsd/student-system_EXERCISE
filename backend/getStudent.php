@@ -10,8 +10,6 @@ if ($_SERVER['REQUEST_METHOD'] !== "GET"){
 }
 
 if(!isset($_GET['student_id'])){
-    echo "------------------";
-    pr($_GET);
     error(422,"unprocessable Entity");
 };
 

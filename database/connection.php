@@ -8,9 +8,9 @@
 
 
 
-$DNS =  "mysql:host=localhost;dbname=register";
-$USERNAME = "root";
-$PASSWORD = "";
+$DNS =  "mysql:host=fdb1029.awardspace.net;dbname=4793740_register";
+$USERNAME = "4793740_register";
+$PASSWORD = "Aa12345678";
 
 
 try {
