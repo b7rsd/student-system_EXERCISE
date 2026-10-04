@@ -16,7 +16,7 @@ if(!isset($_POST['student_id'])){
 };
 
 
-$DB = connction();
+$DB = connection();
 
 $DB->exec("DELETE FROM students WHERE id = '{$_POST['student_id']}';");
 

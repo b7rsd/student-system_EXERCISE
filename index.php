@@ -139,7 +139,7 @@ require_once __DIR__ . "/backend/helper.php";
 </table>
 <nav aria-label="Page navigation example">
   <ul class="pagination">
-    <?php include __DIR__ . "/components/paganation.php" ?>
+    <?php include __DIR__ . "/components/pagination.php"; pagination();  ?>
   </ul>
 </nav>
    </div>

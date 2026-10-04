@@ -2,8 +2,18 @@
 
 require_once __DIR__ . "/../backend/getStudents.php";
 
-$PGNUM = ceil(getStudentCount() / 10);
 
+function pagination(string $paginationSearch = ""){
+
+if(isset($paginationSearch) && $paginationSearch !== ""){
+    $paginationNum = ceil(getStudentCount($paginationSearch) / 10);
+
+}else{
+  $paginationNum = ceil(getStudentCount() / 10);
+}
+if($paginationNum < 1){
+
+}else{
 $currentPAge = 1 ;
 
 if(isset($_GET['page']) && $_GET['page'] > 1){
@@ -11,7 +21,8 @@ if(isset($_GET['page']) && $_GET['page'] > 1){
 }
 
 $liHTML = "";
-for($i = 0 ; $i <= $PGNUM + 1 ; $i++){
+for($i = 0 ; $i <= $paginationNum + 1 ; $i++){
+
 
 $isActive = ($i === $currentPAge) ? "active" : "";
 
@@ -21,9 +32,10 @@ $isDisabled = ($currentPAge == 1) ? "disabled" :false;
 $previousPage = ($currentPAge >= 2) ? ($currentPAge - 1) : 1;
 $liHTML .= "<li class='page-item'><a class='page-link {$isDisabled}' href='index.php?page={$previousPage}'>Previous</a></li>";
 continue;
-}elseif($i == $PGNUM + 1){
+}elseif($i == $paginationNum + 1){
 
-$isDisabled = ($currentPAge == $PGNUM) ? "disabled" :false;
+
+$isDisabled = ($currentPAge == $paginationNum) ? "disabled" :false;
 $nextPage = ($currentPAge <= 5) ? ($currentPAge + 1) : 6;   
 $liHTML .= "<li class='page-item'><a class='page-link {$isDisabled}' href='index.php?page={$nextPage}'>Next</a></li>";
 continue;
@@ -35,3 +47,9 @@ $liHTML .=    " <li class='page-item'><a class='page-link {$isActive}' href='ind
 
 }
 echo $liHTML;
+}
+}
+
+if(isset($_POST['search'])){
+    pagination($_POST['search']);
+}

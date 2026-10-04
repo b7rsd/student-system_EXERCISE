@@ -93,7 +93,7 @@ function validateUnique(String $field , mixed $value,string $tableName,?int $exc
 if(empty($value)){return;}
 
 
-$DB = connction();
+$DB = connection();
 
     $subquery = "";
     if ($exceptid !== null){

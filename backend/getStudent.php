@@ -14,7 +14,7 @@ if(!isset($_GET['student_id'])){
 };
 
 if(empty($_SESSION['_errors'])){
-    $DB = connction();
+    $DB = connection();
 
 
 $stmt = $DB->query("SELECT id as student_id,first_name as firsName,last_name as lastName,email,age,phone FROM students WHERE id = '{$_GET['student_id']}'

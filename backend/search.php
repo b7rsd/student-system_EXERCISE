@@ -4,6 +4,7 @@
 require_once __DIR__ . "/getStudents.php";
 require_once __DIR__ . "/helper.php";
 
+
 header('Content-Type: application/json; charset=UTF-8');
 
 if ($_SERVER['REQUEST_METHOD'] !== "POST"){
@@ -25,5 +26,4 @@ $students = getStudents($_POST['search']);
 
 
 echo json_encode($students);
-
 

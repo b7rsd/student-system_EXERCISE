@@ -1,13 +1,13 @@
 <?php
 
-
-
-function getStudents(string $search = "",int $page = 1){
-    
 require_once __DIR__ . "/../backend/helper.php";
 require_once __DIR__ . "/../database/connection.php";
 
-$DB = connction();
+
+
+function getStudents(string $search = "",int $page = 1){
+
+$DB = connection();
 
 $offset = ($page * 10) -10;
 
@@ -28,11 +28,30 @@ $result = $stmt->fetchAll();
 return $result;
 }
 
-function getStudentCount(){
-    $DB = connction();
-    $stmt = $DB->query("SELECT COUNT(*) AS total FROM students;
-    
-    ");
+function getStudentCount(string $search = ""){
+
+        
+      $DB = connection();
+
+    if(isset($search) && $search !== ""){
+$stmt = $DB->query("
+    SELECT COUNT(*) AS total
+    FROM students
+    WHERE first_name LIKE '%{$search}%'
+       OR last_name LIKE '%{$search}%'
+       OR email LIKE '%{$search}%'
+       OR age LIKE '%{$search}%'
+       OR phone LIKE '%{$search}%'
+");
+    }else{
+        $stmt = $DB->query("
+    SELECT COUNT(*) AS total
+    FROM students
+");
+}
+
+
     $res = $stmt->fetch();
     return $res['total'];
+
 }

@@ -16,7 +16,7 @@ $_SESSION['_old'] = $_POST;
 
  if(empty($_SESSION['_errors'])){
 
-$DB = connction();
+$DB = connection();
 
 
     $hashPass = password_hash($_POST['password'], PASSWORD_DEFAULT);

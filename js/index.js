@@ -11,6 +11,22 @@ $("#searchForm").submit(function (e) {
         data: dataForm,
         success: function (data){
         showStudents(data);
+          $.ajax({
+            url: "components/pagination.php",
+            type: "post",
+            data: dataForm,
+          success: function (data) {
+    $(".pagination").html("");
+
+        $(".pagination").html(data);
+
+},
+error: function () {
+    console.log("failed pagination");
+}
+          
+          })
+
         },
         error: function (error){
            
@@ -27,10 +43,29 @@ $("#searchForm").submit(function (e) {
 
 
 
+
+
+
+
+
+
+
+
+
+
 function showStudents(students){
+  console.log(students.length)
     $("tbody").html("");
     let tbodyContent = "";
     
+if(students.length <= 0){
+tbodyContent = `<tr>
+        <td colspan="8" style="text-align: center;">
+            No data found
+        </td>
+    </tr>`
+}else{
+  
     for (i=0;i<students.length;i++){
 
       let  shortpass = students[i]['password'].slice(0,15);
@@ -54,6 +89,10 @@ function showStudents(students){
       </tr>
         `;
     }
+}
+
+
+    
     $("tbody").html(tbodyContent);
 }
 

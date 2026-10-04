@@ -18,7 +18,7 @@ $_SESSION['_errors'] = [];
 editValidation();
 
 
-$DB = connction();
+$DB = connection();
 
 
 $passEdit= "";
